@@ -1,0 +1,52 @@
+@page
+@model ClassroomProject.Pages_Logs.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Log</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Log.User)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Log.User.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Log.Action)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Log.Action)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Log.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Log.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Log.IsSuccess)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Log.IsSuccess)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Log.Timestamp)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Log.Timestamp)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Log.Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

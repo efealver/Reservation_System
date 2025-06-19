@@ -1,0 +1,22 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+   <div class="text-center">
+    <h1 class="display-4">Welcome to the Classroom Reservation System</h1>
+    <p>
+        Use the navigation bar to manage academic terms, classrooms, reservations, and view your calendar.
+    </p>
+    <p>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <span>Hello, @User.Identity.Name!</span>
+        }
+        else
+        {
+            <p>Login or contact your admin to get registered!</p>
+        }
+    </p>
+    </div>

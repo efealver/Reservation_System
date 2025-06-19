@@ -1,0 +1,63 @@
+@page
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+@using ClassroomProject.Models
+@model ClassroomProject.Pages_Feedbacks.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    var roles = Model.CurrentUserRoles;
+}
+
+<h1>Contact Us</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Feedback[0].User)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Feedback[0].Classroom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Feedback[0].Rating)
+            </th>
+           
+         
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Feedback) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Classroom.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+           
+            @if(roles.Contains("Admin")){
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-primary">Delete</a>
+            </td>
+            }else{
+            <td>
+                <a asp-page="./Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a> |
+                
+            </td>
+            }
+        </tr>
+}
+    </tbody>
+</table>

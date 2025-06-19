@@ -1,0 +1,57 @@
+@page
+@model ClassroomProject.Pages_Logs.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Log</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Log.Id" />
+            <div class="form-group">
+                
+                <label asp-for="Log.UserId" class="control-label"></label>
+                <select asp-for="Log.UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+                <span asp-validation-for="Log.UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Log.Action" class="control-label"></label>
+                <input asp-for="Log.Action" class="form-control" />
+                <span asp-validation-for="Log.Action" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                
+                <label asp-for="Log.Description" class="control-label"></label>
+                <input asp-for="Log.Description" class="form-control" />
+                <span asp-validation-for="Log.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Log.IsSuccess" /> @Html.DisplayNameFor(model => model.Log.IsSuccess)
+                </label>
+            </div>
+            <div class="form-group">
+                
+                <label asp-for="Log.Timestamp" class="control-label"></label>
+                <input asp-for="Log.Timestamp" class="form-control" />
+                <span asp-validation-for="Log.Timestamp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+

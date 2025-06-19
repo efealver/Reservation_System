@@ -1,0 +1,38 @@
+@page
+@model ClassroomProject.Pages.CalendarModel
+@using Newtonsoft.Json
+@using ClassroomProject.Services
+@{
+    ViewData["Title"] = "My Calendar";
+}
+
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+
+<h2>User Calendar</h2>
+<div id="calendar"></div>
+@* <pre>@JsonConvert.SerializeObject(Model.CalendarEvents, Formatting.Indented)</pre> *@
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            events: @Html.Raw(JsonConvert.SerializeObject(Model.CalendarEvents))
+        });
+        calendar.render();
+    });
+</script>
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: @Html.Raw(JsonConvert.SerializeObject(Model.CalendarEvents ?? new List<ClassroomProject.Services.CalendarEvent>()))
+            });
+            calendar.render();
+        });
+    </script>
+}

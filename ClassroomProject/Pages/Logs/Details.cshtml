@@ -1,0 +1,49 @@
+@page
+@model ClassroomProject.Pages_Logs.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Log</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Log.User)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Log.User.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Log.Action)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Log.Action)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Log.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Log.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Log.IsSuccess)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Log.IsSuccess)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Log.Timestamp)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Log.Timestamp)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Log.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
